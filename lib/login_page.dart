@@ -1,13 +1,18 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
   Login({Key? key}) : super(key: key);
 
-  bool checkHach = true;
+  @override
+  State<Login> createState() => _LoginState();
+}
 
+class _LoginState extends State<Login> {
+
+  bool checkHach = true;
   var email = TextEditingController();
-  var pass = TextEditingController();
+  var pass  = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +81,7 @@ class Login extends StatelessWidget {
                 TextFormField(
                   controller: pass,
                   keyboardType: TextInputType.visiblePassword,
-                  obscureText: true,
+                  obscureText: checkHach,
                   decoration: InputDecoration(
                     labelText: 'Enter Your Password: ',
                     prefixIcon: const Icon(
@@ -84,10 +89,12 @@ class Login extends StatelessWidget {
                     ),
                     suffixIcon: IconButton(
                       icon:Icon(
-                        checkHach?Icons.remove_red_eye:Icons.rectangle,
+                        checkHach?Icons.visibility_off:Icons.visibility,
                       ),
                       onPressed: () {
-                        checkHach=!checkHach;
+                        setState(() {
+                          checkHach=!checkHach;
+                        });
                       },
                     ),
                     border: const OutlineInputBorder(),

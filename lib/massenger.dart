@@ -1,888 +1,241 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
-class Massenger extends StatelessWidget {
-  //const Massenger({Key? key}) : super(key: key);
-
+class Massenger extends StatelessWidget
+{
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context)
+  {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.black,
-        leading: Stack(
-          alignment: Alignment.topRight,
-          children: [
-            const CircleAvatar(
-              radius: 20,
+        backgroundColor: Colors.white,
+        elevation: 0.0,
+        titleSpacing: 20.0,
+        title: Row(
+          children: const [
+            CircleAvatar(
+              radius: 20.0,
               backgroundImage: NetworkImage(
                   'https://avatars.githubusercontent.com/u/62659230?v=4'),
             ),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(
-                  50.0,
-                ),
-              ),
-              clipBehavior: Clip.antiAliasWithSaveLayer,
-              child: const Text(
-                " 2 ",
-                style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                  backgroundColor: Colors.red,
-                ),
+            SizedBox(
+              width: 15.0,
+            ),
+            Text(
+              'Chats',
+              style: TextStyle(
+                color: Colors.black,
               ),
             ),
           ],
         ),
-        title: const Text(
-          "Chats",
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 25,
-          ),
-        ),
         actions: [
           IconButton(
-            onPressed: () {},
             icon: const CircleAvatar(
-              radius: 20,
-              backgroundColor: Colors.white,
+              radius: 15.0,
+              backgroundColor: Colors.blue,
               child: Icon(
                 Icons.camera_alt,
-                color: Colors.black,
+                size: 16.0,
+                color: Colors.white,
               ),
             ),
+            onPressed: () {},
           ),
           IconButton(
-            onPressed: () {},
             icon: const CircleAvatar(
-              radius: 20,
-              backgroundColor: Colors.white,
+              radius: 15.0,
+              backgroundColor: Colors.blue,
               child: Icon(
                 Icons.edit,
-                color: Colors.black,
+                size: 16.0,
+                color: Colors.white,
               ),
             ),
+            onPressed: () {},
           ),
         ],
-        titleSpacing: 20,
       ),
-      body: Container(
-        padding: const EdgeInsetsDirectional.all(20),
-        child: SafeArea(
-          child: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Column(
-              children: [
-                Container(
-                  padding: const EdgeInsetsDirectional.all(
-                    5,
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(
+                    5.0,
                   ),
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.8),
-                    borderRadius: BorderRadius.circular(
-                      10,
+                  color: Colors.grey[300],
+                ),
+                padding: const EdgeInsets.all(
+                  5.0,
+                ),
+                child: Row(
+                  children: const [
+                    Icon(
+                      Icons.search,
                     ),
-                  ),
-                  child: Row(
-                    children: const [
-                      Icon(
-                        Icons.search,
-                        color: Colors.black,
-                      ),
-                      SizedBox(
-                        width: 15,
-                      ),
-                      Text(
-                        "Search",
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 20,
-                        ),
-                      ),
-                    ],
-                  ),
+                    SizedBox(
+                      width: 15.0,
+                    ),
+                    Text(
+                      'Search',
+                    ),
+                  ],
                 ),
-                const SizedBox(
-                  height: 15,
-                ),
-                SingleChildScrollView(
+              ),
+              const SizedBox(
+                height: 20.0,
+              ),
+              Container(
+                height: 100.0,
+                child: ListView.separated(
                   scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      Container(
-                        width: 50,
-                        child: Column(
-                          children: const [
-                            CircleAvatar(
-                              radius: 25,
-                              backgroundImage: NetworkImage(
-                                  'https://avatars.githubusercontent.com/u/62659230?v=4'),
-                            ),
-                            Text(
-                              "Ahmed Sayed Hassan",
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 10,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Container(
-                        width: 50,
-                        child: Column(
-                          children: const [
-                            CircleAvatar(
-                              radius: 25,
-                              backgroundImage: NetworkImage(
-                                  'https://avatars.githubusercontent.com/u/62659230?v=4'),
-                            ),
-                            Text(
-                              "Ahmed Sayed Hassan",
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 10,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Container(
-                        width: 50,
-                        child: Column(
-                          children: const [
-                            CircleAvatar(
-                              radius: 25,
-                              backgroundImage: NetworkImage(
-                                  'https://avatars.githubusercontent.com/u/62659230?v=4'),
-                            ),
-                            Text(
-                              "Ahmed Sayed Hassan",
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 10,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Container(
-                        width: 50,
-                        child: Column(
-                          children: const [
-                            CircleAvatar(
-                              radius: 25,
-                              backgroundImage: NetworkImage(
-                                  'https://avatars.githubusercontent.com/u/62659230?v=4'),
-                            ),
-                            Text(
-                              "Ahmed Sayed Hassan",
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 10,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Container(
-                        width: 50,
-                        child: Column(
-                          children: const [
-                            CircleAvatar(
-                              radius: 25,
-                              backgroundImage: NetworkImage(
-                                  'https://avatars.githubusercontent.com/u/62659230?v=4'),
-                            ),
-                            Text(
-                              "Ahmed Sayed Hassan",
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 10,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Container(
-                        width: 50,
-                        child: Column(
-                          children: const [
-                            CircleAvatar(
-                              radius: 25,
-                              backgroundImage: NetworkImage(
-                                  'https://avatars.githubusercontent.com/u/62659230?v=4'),
-                            ),
-                            Text(
-                              "Ahmed Sayed Hassan",
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 10,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Container(
-                        width: 50,
-                        child: Column(
-                          children: const [
-                            CircleAvatar(
-                              radius: 25,
-                              backgroundImage: NetworkImage(
-                                  'https://avatars.githubusercontent.com/u/62659230?v=4'),
-                            ),
-                            Text(
-                              "Ahmed Sayed Hassan",
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 10,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Container(
-                        width: 50,
-                        child: Column(
-                          children: const [
-                            CircleAvatar(
-                              radius: 25,
-                              backgroundImage: NetworkImage(
-                                  'https://avatars.githubusercontent.com/u/62659230?v=4'),
-                            ),
-                            Text(
-                              "Ahmed Sayed Hassan",
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 10,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Container(
-                        width: 50,
-                        child: Column(
-                          children: const [
-                            CircleAvatar(
-                              radius: 25,
-                              backgroundImage: NetworkImage(
-                                  'https://avatars.githubusercontent.com/u/62659230?v=4'),
-                            ),
-                            Text(
-                              "Ahmed Sayed Hassan",
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 10,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+                  itemBuilder: (context, index) => buildStoryItem(),
+                  separatorBuilder: (context, index) => const SizedBox(
+                    width: 20.0,
                   ),
+                  itemCount: 10,
+                ),
+              ),
+              const SizedBox(
+                height: 20.0,
+              ),
+              ListView.separated(
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemBuilder: (context, index) => buildChatItem(),
+                separatorBuilder: (context, index) => const SizedBox(
+                  height: 20.0,
+                ),
+                itemCount: 50,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  // 1. build item
+  // 2. build list
+  // 3. add item to list
+
+  // arrow function
+  Widget buildChatItem() =>
+      Row(
+        children: [
+          Stack(
+            alignment: AlignmentDirectional.bottomEnd,
+            children: const [
+              CircleAvatar(
+                radius: 30.0,
+                backgroundImage: NetworkImage(
+                    'https://avatars.githubusercontent.com/u/62659230?v=4'),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.only(
+                  bottom: 3.0,
+                  end: 3.0,
+                ),
+                child: CircleAvatar(
+                  radius: 7.0,
+                  backgroundColor: Colors.red,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(
+            width: 20.0,
+          ),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Ahmed Sayed Hassan Youssef',
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(
-                  height: 15,
+                  height: 5.0,
                 ),
                 Row(
-                  children: [
-                    const CircleAvatar(
-                      radius: 25,
-                      backgroundImage: NetworkImage(
-                          'https://avatars.githubusercontent.com/u/62659230?v=4'),
-                    ),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Padding(
-                          padding: EdgeInsetsDirectional.only(bottom: 10),
-                          child: Text(
-                            'Ahmed Sayed',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        Text(
-                          'How Are You?',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Container(
-                      padding: const EdgeInsetsDirectional.only(
-                        top: 30,
-                      ),
-                      child: const Text(
-                        "11:48 am",
-                        style: TextStyle(color: Colors.white),
+                  children:
+                  [
+                    const Expanded(
+                      child: Text(
+                        'hello my name is ahmed hello my name is ahmed',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  children: [
-                    const CircleAvatar(
-                      radius: 25,
-                      backgroundImage: NetworkImage(
-                          'https://avatars.githubusercontent.com/u/62659230?v=4'),
-                    ),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Padding(
-                          padding: EdgeInsetsDirectional.only(bottom: 10),
-                          child: Text(
-                            'Ahmed Sayed',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        Text(
-                          'How Are You?',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Container(
-                      padding: const EdgeInsetsDirectional.only(
-                        top: 30,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 10.0,
                       ),
-                      child: const Text(
-                        "11:48 am",
-                        style: TextStyle(color: Colors.white),
+                      child: Container(
+                        width: 7.0,
+                        height: 7.0,
+                        decoration: const BoxDecoration(
+                          color: Colors.blue,
+                          shape: BoxShape.circle,
+                        ),
                       ),
                     ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  children: [
-                    const CircleAvatar(
-                      radius: 25,
-                      backgroundImage: NetworkImage(
-                          'https://avatars.githubusercontent.com/u/62659230?v=4'),
-                    ),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Padding(
-                          padding: EdgeInsetsDirectional.only(bottom: 10),
-                          child: Text(
-                            'Ahmed Sayed',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        Text(
-                          'How Are You?',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Container(
-                      padding: const EdgeInsetsDirectional.only(
-                        top: 30,
-                      ),
-                      child: const Text(
-                        "11:48 am",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  children: [
-                    const CircleAvatar(
-                      radius: 25,
-                      backgroundImage: NetworkImage(
-                          'https://avatars.githubusercontent.com/u/62659230?v=4'),
-                    ),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Padding(
-                          padding: EdgeInsetsDirectional.only(bottom: 10),
-                          child: Text(
-                            'Ahmed Sayed',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        Text(
-                          'How Are You?',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Container(
-                      padding: const EdgeInsetsDirectional.only(
-                        top: 30,
-                      ),
-                      child: const Text(
-                        "11:48 am",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  children: [
-                    const CircleAvatar(
-                      radius: 25,
-                      backgroundImage: NetworkImage(
-                          'https://avatars.githubusercontent.com/u/62659230?v=4'),
-                    ),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Padding(
-                          padding: EdgeInsetsDirectional.only(bottom: 10),
-                          child: Text(
-                            'Ahmed Sayed',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        Text(
-                          'How Are You?',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Container(
-                      padding: const EdgeInsetsDirectional.only(
-                        top: 30,
-                      ),
-                      child: const Text(
-                        "11:48 am",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  children: [
-                    const CircleAvatar(
-                      radius: 25,
-                      backgroundImage: NetworkImage(
-                          'https://avatars.githubusercontent.com/u/62659230?v=4'),
-                    ),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Padding(
-                          padding: EdgeInsetsDirectional.only(bottom: 10),
-                          child: Text(
-                            'Ahmed Sayed',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        Text(
-                          'How Are You?',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Container(
-                      padding: const EdgeInsetsDirectional.only(
-                        top: 30,
-                      ),
-                      child: const Text(
-                        "11:48 am",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  children: [
-                    const CircleAvatar(
-                      radius: 25,
-                      backgroundImage: NetworkImage(
-                          'https://avatars.githubusercontent.com/u/62659230?v=4'),
-                    ),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Padding(
-                          padding: EdgeInsetsDirectional.only(bottom: 10),
-                          child: Text(
-                            'Ahmed Sayed',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        Text(
-                          'How Are You?',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Container(
-                      padding: const EdgeInsetsDirectional.only(
-                        top: 30,
-                      ),
-                      child: const Text(
-                        "11:48 am",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  children: [
-                    const CircleAvatar(
-                      radius: 25,
-                      backgroundImage: NetworkImage(
-                          'https://avatars.githubusercontent.com/u/62659230?v=4'),
-                    ),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Padding(
-                          padding: EdgeInsetsDirectional.only(bottom: 10),
-                          child: Text(
-                            'Ahmed Sayed',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        Text(
-                          'How Are You?',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Container(
-                      padding: const EdgeInsetsDirectional.only(
-                        top: 30,
-                      ),
-                      child: const Text(
-                        "11:48 am",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  children: [
-                    const CircleAvatar(
-                      radius: 25,
-                      backgroundImage: NetworkImage(
-                          'https://avatars.githubusercontent.com/u/62659230?v=4'),
-                    ),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Padding(
-                          padding: EdgeInsetsDirectional.only(bottom: 10),
-                          child: Text(
-                            'Ahmed Sayed',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        Text(
-                          'How Are You?',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Container(
-                      padding: const EdgeInsetsDirectional.only(
-                        top: 30,
-                      ),
-                      child: const Text(
-                        "11:48 am",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  children: [
-                    const CircleAvatar(
-                      radius: 25,
-                      backgroundImage: NetworkImage(
-                          'https://avatars.githubusercontent.com/u/62659230?v=4'),
-                    ),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Padding(
-                          padding: EdgeInsetsDirectional.only(bottom: 10),
-                          child: Text(
-                            'Ahmed Sayed',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        Text(
-                          'How Are You?',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Container(
-                      padding: const EdgeInsetsDirectional.only(
-                        top: 30,
-                      ),
-                      child: const Text(
-                        "11:48 am",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  children: [
-                    const CircleAvatar(
-                      radius: 25,
-                      backgroundImage: NetworkImage(
-                          'https://avatars.githubusercontent.com/u/62659230?v=4'),
-                    ),
-                    const SizedBox(
-                      width: 15,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Padding(
-                          padding: EdgeInsetsDirectional.only(bottom: 10),
-                          child: Text(
-                            'Ahmed Sayed',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 17,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        Text(
-                          'How Are You?',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Container(
-                      padding: const EdgeInsetsDirectional.only(
-                        top: 30,
-                      ),
-                      child: const Text(
-                        "11:48 am",
-                        style: TextStyle(color: Colors.white),
-                      ),
+                    const Text(
+                      '02:00 pm',
                     ),
                   ],
                 ),
               ],
             ),
           ),
+        ],
+      );
+
+  Widget buildStoryItem() =>
+      Container(
+        width: 60.0,
+        child: Column(
+          children: [
+            Stack(
+              alignment: AlignmentDirectional.bottomEnd,
+              children: const [
+                CircleAvatar(
+                  radius: 30.0,
+                  backgroundImage: NetworkImage(
+                      'https://avatars.githubusercontent.com/u/62659230?v=4'),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.only(
+                    bottom: 3.0,
+                    end: 3.0,
+                  ),
+                  child: CircleAvatar(
+                    radius: 7.0,
+                    backgroundColor: Colors.red,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 6.0,
+            ),
+            const Text(
+              'Ahmed Sayed Hassan Youssef',
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ],
         ),
-      ),
-    );
-  }
+      );
 }
