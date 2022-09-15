@@ -1,8 +1,9 @@
 import 'dart:math';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:learn/Bmi_result_screen.dart';
+
+import 'Bmi_result_screen.dart';
+
 
 class BmiScreen extends StatefulWidget {
   @override
@@ -208,6 +209,8 @@ class _BmiScreenState extends State<BmiScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               FloatingActionButton(
+                                heroTag: 'age-',
+
                                 child: const Icon(Icons.remove),
                                 mini: true,
                                 onPressed: () {
@@ -217,6 +220,8 @@ class _BmiScreenState extends State<BmiScreen> {
                                 },
                               ),
                               FloatingActionButton(
+                                heroTag: 'age+',
+
                                 child: const Icon(Icons.add),
                                 mini: true,
                                 onPressed: () {
@@ -267,6 +272,8 @@ class _BmiScreenState extends State<BmiScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               FloatingActionButton(
+                                heroTag: 'weight-',
+
                                 child: const Icon(Icons.remove),
                                 mini: true,
                                 onPressed: () {
@@ -276,6 +283,7 @@ class _BmiScreenState extends State<BmiScreen> {
                                 },
                               ),
                               FloatingActionButton(
+                                heroTag: 'weight+',
                                 child: const Icon(Icons.add),
                                 mini: true,
                                 onPressed: () {
