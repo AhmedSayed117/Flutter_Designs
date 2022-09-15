@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:learn/Bmi_result_screen.dart';
+import 'package:learn/Bmi_screen.dart';
 import 'package:learn/login_page.dart';
 import 'package:learn/massenger.dart';
 import 'package:learn/user_screen.dart';
@@ -8,14 +10,12 @@ void main() {
 }
 
 class MyApp extends StatelessWidget{
-  // const MyApp({Key? key}) : super(key: key);
 
-  // const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: UserScreen(),
+      home: BmiScreen(),
     );
   }
 }
