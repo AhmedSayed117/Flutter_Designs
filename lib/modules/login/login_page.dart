@@ -14,6 +14,7 @@ class _LoginState extends State<Login> {
   bool checkHach = true;
   var email = TextEditingController();
   var pass = TextEditingController();
+  var formKey = GlobalKey<FormState>();
   bool obscureText = true;
 
   @override
@@ -53,71 +54,84 @@ class _LoginState extends State<Login> {
         padding: const EdgeInsets.all(20.0),
         child: Center(
           child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  "Login",
-                  style: TextStyle(
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
+            child: Form(
+              key:formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    "Login",
+                    style: TextStyle(
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                const SizedBox(
-                  height: 40,
-                ),
-                DefaultInputField(
-                    onPressed: (){},
-                    type: TextInputType.emailAddress,
-                    controller: email,
-                    prefixIcon: Icons.email,
-                    text: 'Enter Your Email'),
-                const SizedBox(
-                  height: 15,
-                ),
-                DefaultInputField(
-                  onPressed: (){
-                    setState(() {
-                      obscureText = !obscureText;
-                    });
-                  },
-                  controller: pass,
-                  prefixIcon: Icons.lock,
-                  obscureText: obscureText,
-                  text: 'Enter Your Password',
-                  suffixIcon: obscureText?Icons.visibility_off:Icons.visibility,
-                  type: TextInputType.visiblePassword,
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                Container(
-                  color: Colors.blue,
-                  width: double.infinity,
-                  child: DefaultMaterialButton(
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  DefaultInputField(
+                      onPressed: (){},
+                      type: TextInputType.emailAddress,
+                      controller: email,
+                      prefixIcon: Icons.email,
+                      text: 'Enter Your Email',
+                      validate:(String? value){
+                          if(value!.isEmpty)return "Email cant be Empty !";
+                          if(!value.contains('@') || !value.contains('.'))return "Email not valid !";
+                          return null;
+                      },
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  DefaultInputField(
+                    onPressed: (){
+                      setState(() {
+                        obscureText = !obscureText;
+                      });
+                    },
+                    controller: pass,
+                    prefixIcon: Icons.lock,
+                    obscureText: obscureText,
+                    text: 'Enter Your Password',
+                    suffixIcon: obscureText?Icons.visibility_off:Icons.visibility,
+                    type: TextInputType.visiblePassword,
+                    validate: (String? value){
+                      if(value!.isEmpty)return "Password cant be Empty !";
+                      if(value.length<8)return "Password must at least 8 digits !";
+                      return null;
+                    },
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  DefaultMaterialButton(
+                    ContainerColor: Colors.blue,
                     text: "Login",
                     fontSize: 25.0,
                     fontWeight: FontWeight.w900,
                     onPressed: (){
-                      print(email.text);
-                      print(pass.text);
+                      if(formKey.currentState!.validate()){
+                        print(email.text);
+                        print(pass.text);
+                      }
                     }
                   ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text("Don't have an account?"),
-                    TextButton(
-                      child: const Text("Register Now"),
-                      onPressed: () {},
-                    ),
-                  ],
-                ),
-              ],
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text("Don't have an account?"),
+                      TextButton(
+                        child: const Text("Register Now"),
+                        onPressed: () {},
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),

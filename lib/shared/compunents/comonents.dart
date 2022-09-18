@@ -7,7 +7,8 @@ Widget DefaultInputField({
   @required String? text,
   @required IconData? prefixIcon,
   bool obscureText = false,
-  required VoidCallback onPressed,
+  VoidCallback? onPressed,
+  required String? Function(String?)? validate,
 }) =>
     TextFormField(
       controller: controller,
@@ -28,6 +29,7 @@ Widget DefaultInputField({
             : null,
         border: const OutlineInputBorder(),
       ),
+      validator: validate,
     );
 
 
@@ -37,13 +39,22 @@ Widget DefaultInputField({
 Widget DefaultMaterialButton({
   required String text,
   Color textColor = Colors.white,
+  Color ContainerColor = Colors.black,
   double fontSize = 25.0,
+  double width = double.infinity,
   FontWeight fontWeight = FontWeight.normal,
-  required VoidCallback onPressed,
-}) => MaterialButton(
-  child:Text(
-    text.toUpperCase(),
-    style: TextStyle(color: textColor,fontWeight: fontWeight,fontSize: fontSize),
+  VoidCallback? onPressed,
+}) => Container(
+  width: width,
+  decoration: BoxDecoration(
+    color: ContainerColor,
+    borderRadius: BorderRadius.circular(20.0,),
   ),
-  onPressed: onPressed,
+  child:   MaterialButton  (
+    child:Text(
+      text.toUpperCase(),
+      style: TextStyle(color: textColor,fontWeight: fontWeight,fontSize: fontSize),
+    ),
+    onPressed: onPressed,
+  ),
 );
