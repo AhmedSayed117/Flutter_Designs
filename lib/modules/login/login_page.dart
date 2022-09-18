@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import '../../shared/compunents/comonents.dart';
+
 class Login extends StatefulWidget {
   Login({Key? key}) : super(key: key);
 
@@ -9,10 +11,10 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-
   bool checkHach = true;
   var email = TextEditingController();
-  var pass  = TextEditingController();
+  var pass = TextEditingController();
+  bool obscureText = true;
 
   @override
   Widget build(BuildContext context) {
@@ -64,41 +66,27 @@ class _LoginState extends State<Login> {
                 const SizedBox(
                   height: 40,
                 ),
-                TextFormField(
-                  controller: email,
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: const InputDecoration(
-                    labelText: 'Enter Your Email: ',
-                    prefixIcon: Icon(
-                      Icons.email,
-                    ),
-                    border: OutlineInputBorder(),
-                  ),
-                ),
+                DefaultInputField(
+                    onPressed: (){},
+                    type: TextInputType.emailAddress,
+                    controller: email,
+                    prefixIcon: Icons.email,
+                    text: 'Enter Your Email'),
                 const SizedBox(
                   height: 15,
                 ),
-                TextFormField(
+                DefaultInputField(
+                  onPressed: (){
+                    setState(() {
+                      obscureText = !obscureText;
+                    });
+                  },
                   controller: pass,
-                  keyboardType: TextInputType.visiblePassword,
-                  obscureText: checkHach,
-                  decoration: InputDecoration(
-                    labelText: 'Enter Your Password: ',
-                    prefixIcon: const Icon(
-                      Icons.lock,
-                    ),
-                    suffixIcon: IconButton(
-                      icon:Icon(
-                        checkHach?Icons.visibility_off:Icons.visibility,
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          checkHach=!checkHach;
-                        });
-                      },
-                    ),
-                    border: const OutlineInputBorder(),
-                  ),
+                  prefixIcon: Icons.lock,
+                  obscureText: obscureText,
+                  text: 'Enter Your Password',
+                  suffixIcon: obscureText?Icons.visibility_off:Icons.visibility,
+                  type: TextInputType.visiblePassword,
                 ),
                 const SizedBox(
                   height: 15,
@@ -106,15 +94,14 @@ class _LoginState extends State<Login> {
                 Container(
                   color: Colors.blue,
                   width: double.infinity,
-                  child: MaterialButton(
-                    child: const Text(
-                      "LOGIN",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    onPressed: () {
-                      print("email: " + email.text);
-                      print("password: "+pass.text);
-                    },
+                  child: DefaultMaterialButton(
+                    text: "Login",
+                    fontSize: 25.0,
+                    fontWeight: FontWeight.w900,
+                    onPressed: (){
+                      print(email.text);
+                      print(pass.text);
+                    }
                   ),
                 ),
                 const SizedBox(
@@ -123,14 +110,10 @@ class _LoginState extends State<Login> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
-                      "Don't have an account?"
-                    ),
+                    const Text("Don't have an account?"),
                     TextButton(
-                      child: const Text(
-                        "Register Now"
-                      ),
-                      onPressed: (){},
+                      child: const Text("Register Now"),
+                      onPressed: () {},
                     ),
                   ],
                 ),

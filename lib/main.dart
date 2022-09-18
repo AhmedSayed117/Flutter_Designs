@@ -1,7 +1,9 @@
+import 'package:bmi_app/modules/counter/counter.dart';
+import 'package:bmi_app/modules/login/login_page.dart';
 import 'package:flutter/material.dart';
 
 
-import 'Bmi_screen.dart';
+import 'modules/bmi/Bmi_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,7 +15,7 @@ class MyApp extends StatelessWidget{
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: BmiScreen(),
+      home: Login(),
     );
   }
 }
