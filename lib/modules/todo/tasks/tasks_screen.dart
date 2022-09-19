@@ -1,7 +1,8 @@
-import 'package:bmi_app/shared/compunents/tasks.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:bmi_app/modules/todo/cubit/cuit.dart';
+import 'package:bmi_app/modules/todo/cubit/states.dart';
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../shared/compunents/comonents.dart';
 import '../add_task/add_task_screen.dart';
 
@@ -10,37 +11,50 @@ class TasksScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(
-          Icons.add,
-        ),
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => AddTasksScreen(),
+    return BlocConsumer<TodoCubit, TodoStates>(
+      listener: (context, state) => {},
+      builder: (context, state) {
+        var cubit = TodoCubit.get(context);
+        return Scaffold(
+          floatingActionButton: FloatingActionButton(
+            child: const Icon(
+              Icons.add,
             ),
-          );
-        },
-        mini: true,
-      ),
-      body: ListView.separated(
-        physics: const BouncingScrollPhysics(),
-        itemBuilder: (context,index) => taskInfo(tasks[index]),
-          separatorBuilder: (context,index) =>Padding(
-            padding: const EdgeInsetsDirectional.only(
-              start: 20.0,
-            ),
-            child: Container(
-              width: double.infinity,
-              height: 1.0,
-              color: Colors.grey,
-              child: const SizedBox(height: 15.0,),
-            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => AddTasksScreen(),
+                ),
+              );
+            },
+            mini: true,
           ),
-          itemCount: tasks.length,
-      ),
+          body: ConditionalBuilder(
+            condition: cubit.newtasks.isNotEmpty,
+            builder: (context) => ListView.separated(
+              physics: const BouncingScrollPhysics(),
+              itemBuilder: (context, index) =>
+                  taskInfo(cubit.newtasks[index], context),
+              separatorBuilder: (context, index) => Padding(
+                padding: const EdgeInsetsDirectional.only(
+                  start: 20.0,
+                ),
+                child: Container(
+                  width: double.infinity,
+                  height: 1.0,
+                  color: Colors.grey,
+                  child: const SizedBox(
+                    height: 15.0,
+                  ),
+                ),
+              ),
+              itemCount: cubit.newtasks.length,
+            ),
+            fallback: (context) => fallbackCondition(),
+          ),
+        );
+      },
     );
   }
 }

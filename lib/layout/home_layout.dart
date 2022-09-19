@@ -1,73 +1,53 @@
-import 'package:bmi_app/modules/todo/archine_tasks/archive_screen.dart';
-import 'package:bmi_app/modules/todo/done_tasks/done_tasks_screen.dart';
+import 'package:bmi_app/modules/todo/cubit/states.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../modules/todo/tasks/tasks_screen.dart';
-import '../shared/network/local/sqflitemodel.dart';
-
-class HomeLayout extends StatefulWidget {
+import '../modules/todo/cubit/cuit.dart';
+class HomeLayout extends StatelessWidget {
   HomeLayout({Key? key}) : super(key: key);
 
   @override
-  State<HomeLayout> createState() => _HomeLayoutState();
-}
-
-class _HomeLayoutState extends State<HomeLayout> {
-  int currentIndex = 0;
-
-
-  List<Widget> screens = [
-    const TasksScreen(),
-    const DoneTasksScreen(),
-    const ArchiveTasksScreen(),
-  ];
-
-  List<String> titles = [
-    "Tasks",
-    "Done Tasks",
-    "Archive Tasks",
-  ];
-
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          titles[currentIndex],
-        ),
-      ),
-      body: screens[currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentIndex,
-        onTap: (index) {
-          setState(() {
-            currentIndex = index;
-          });
-        },
-        type: BottomNavigationBarType.fixed,
-        iconSize: 26.0,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.menu,
+    return BlocConsumer<TodoCubit, TodoStates>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          var cubit = TodoCubit.get(context);
+          return Scaffold(
+            appBar: AppBar(
+              title: Text(
+                cubit.titles[cubit.currentIndex],
+              ),
             ),
-            label: 'Tasks',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.check_circle_outline,
+            body: cubit.screens[cubit.currentIndex],
+            bottomNavigationBar: BottomNavigationBar(
+              currentIndex: cubit.currentIndex,
+              onTap: (index) {
+                cubit.setCurrentIndex(index);
+              },
+              type: BottomNavigationBarType.fixed,
+              iconSize: 26.0,
+              items: const [
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.menu,
+                  ),
+                  label: 'Tasks',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.check_circle_outline,
+                  ),
+                  label: 'Done Tasks',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.archive_outlined,
+                  ),
+                  label: 'Archive',
+                ),
+              ],
             ),
-            label: 'Done Tasks',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.archive_outlined,
-            ),
-            label: 'Archive',
-          ),
-        ],
-      ),
-    );
+          );
+        });
   }
 }
